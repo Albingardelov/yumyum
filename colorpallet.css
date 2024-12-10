@@ -1,0 +1,9 @@
+:root {
+	--shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.16);
+    --green: #489078;
+    --text-white: #f4f3f1f0;
+    --background-grey: #605858;
+    --pop-grey: #f1f0ec3d;
+    --chosen-grey: #353131;
+	--cart-grey: #c2c1c1;
+}

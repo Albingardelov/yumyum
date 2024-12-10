@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.dot-box {
+    border-bottom: 2px dotted rgb(255, 255, 255);
+    flex-grow: 1;
+    margin: 0.3rem;
+}
+
+.cart-button {
+    border: none;
+    place-self: flex-end;
+    border-radius: 10px;
+    /* box-shadow: var(--shadow); */
+}
+
+section {
+    min-height: 100vh;
+}
+h1 {
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 22px;
+}
+
+p {
+    font-size: 14px;
+}
+
+/* MENU */
+
+.menu {
+    background-color: var(--green);
+    color: var(--text-white);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.dish-container {
+    background-color: var(--background-grey);
+    padding: 1rem;
+    border-bottom: 1px solid var(--pop-grey);
+    box-shadow: var(--shadow);
+}
+
+.dish-container * {
+    text-shadow: var(--shadow);
+}
+
+/* WONTONS */
+
+.wontons .dish-container:first-child {
+    border-radius: 10px 10px 0 0;
+}
+
+.wontons .dish-container:last-child {
+    border-radius: 0 0 10px 10px;
+    border-bottom: none;
+}
+
+/* title-container */
+.wontons .dish-container > div {
+    display: flex;
+}
+
+
+.dips {
+    margin-top: 1rem;
+}
+
+.dips .dish-container {
+    border-radius: 10px;
+}
+
+.dips .dish-container > div {
+    display: flex;
+}
+
+.flavour-container {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.flavour-container > p {
+    text-align: center;
+    margin: 0.3rem;
+    padding: 0.5rem;
+    flex-grow: 1;
+    box-shadow: var(--shadow);
+    border-radius: 7px;
+    background-color: var(--pop-grey);
+}
+
+
+.drinks {
+    margin-top: 1rem;
+}
+
+.drinks .dish-container {
+    border-radius: 10px;
+}
+
+.drinks .dish-container > div {
+    display: flex;
+}
+
+.hidden {
+    display: none;
+}
