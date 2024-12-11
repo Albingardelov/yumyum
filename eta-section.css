@@ -1,0 +1,72 @@
+/* Stil för hela ETA-sektionen */
+.eta {
+	display: none;
+}
+.eta.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--background-grey);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* Stil för bilden */
+.eta img {
+    max-width: 100%; /* Anpassa till föräldrarnas bredd */
+    height: auto; /* Bibehåll proportioner */
+    max-height: 200px; /* Begränsa höjden */
+    margin-bottom: 20px; /* Utrymme under bilden */
+    border-radius: 8px; /* Rundade hörn för en mjukare känsla */
+}
+
+/* Stil för rubriken */
+.eta h2 {
+    font-size: 1.8rem;
+	font-size: 32px;
+    color: var(--text-white);
+    margin-bottom: 10px;
+}
+
+/* Stil för meddelandet */
+#eta-message {
+    font-size: 26px;
+    color: var(--text-white);
+}
+
+
+#receipt-button {
+	background-color: var(--background-grey);
+    color: var(--text-white);
+	border: 2.5px solid var(--button-border);
+    padding: 1rem;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 22px;
+	margin: 0.75rem;
+	min-width: 312px;
+}
+
+#receipt-button:hover {
+	background-color: var(--chosen-grey);
+}
+
+#neworder-button {
+	background-color: var(--chosen-grey);
+    color: var(--text-white);
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+#neworder-button:hover {
+	background-color: var(--background-grey);
+	border: 2.5px solid var(--button-border);
+}
