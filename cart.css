@@ -60,3 +60,21 @@
 .hidden {
     display: none;
 }
+
+.item-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.increase-button, .decrease-button {
+    background-color: var(--cart-grey);
+    border: none;
+	border-radius: 50%;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.increase-button:hover, .decrease-button:hover {
+    background-color: #ddd;
+}

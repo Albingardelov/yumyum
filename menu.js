@@ -23,31 +23,38 @@ export function renderMenu(menu) {
 
     //render wontons
     wontons.forEach((wonton) => {
-        const wontonContainer = document.createElement("div");
-        const wontonTilteContainer = document.createElement("div");
-        const wontonTitle = document.createElement("h3");
-        const wontonPrice = document.createElement("h3");
-        const dotBox = document.createElement("div");
-        const wontonIngredients = document.createElement("p");
-
+		const wontonContainer = document.createElement("div");
+		const wontonTilteContainer = document.createElement("div");
+		const wontonTitle = document.createElement("h3");
+		const wontonPrice = document.createElement("h3");
+		const dotBox = document.createElement("div");
+		const wontonIngredients = document.createElement("p");
+	
 		wontonContainer.setAttribute("role", "button");
 		wontonContainer.setAttribute("tabindex", "0");
-
-        dotBox.classList.add("dot-box");
-        wontonContainer.classList.add("dish-container");
-
-        wontonTitle.innerText = wonton.name.toUpperCase();
-        wontonPrice.innerText = wonton.price + " SEK";
-        wontonIngredients.innerText = wonton.ingredients.join(", ");
-
-        menuWontons.append(wontonContainer);
-        wontonContainer.append(wontonTilteContainer, wontonIngredients);
-        wontonTilteContainer.append(wontonTitle, dotBox, wontonPrice);
-
-        wontonContainer.addEventListener("click", () =>
-            addToCart(wonton, wontonContainer)
-        );
-    });
+	
+		dotBox.classList.add("dot-box");
+		wontonContainer.classList.add("dish-container");
+	
+		wontonTitle.innerText = wonton.name.toUpperCase();
+		wontonPrice.innerText = wonton.price + " SEK";
+		wontonIngredients.innerText = wonton.ingredients.join(", ");
+	
+		menuWontons.append(wontonContainer);
+		wontonContainer.append(wontonTilteContainer, wontonIngredients);
+		wontonTilteContainer.append(wontonTitle, dotBox, wontonPrice);
+	
+		wontonContainer.addEventListener("click", () =>
+			addToCart(wonton, wontonContainer)
+		);
+	
+		wontonContainer.addEventListener("keydown", (event) => {
+			if (event.key === "Enter") {
+				addToCart(wonton, wontonContainer);
+			}
+		});
+	});
+	
     //render dips
     const dipContainer = document.createElement("div");
     const dipTitleContainer = document.createElement("div");

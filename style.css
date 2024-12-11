@@ -24,6 +24,7 @@
 
 .cart-button {
     position: relative;
+	cursor: pointer;
 }
 
 .cart-counter {
