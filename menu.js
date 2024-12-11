@@ -64,12 +64,28 @@ export function renderMenu(menu) {
     dipTitleContainer.append(dipTitle, dotBox2, dipPrice);
     menuDips.append(dipContainer);
 
-    dips.forEach((dip) => {
-        const dipName = document.createElement("p");
-        dipName.innerText = dip.name;
-        dipFlavourContainer.append(dipName);
-        dipName.addEventListener("click", () => addToCart(dip, dipName));
-    });
+    // dips.forEach((dip) => {
+    //     const dipName = document.createElement("p");
+    //     dipName.innerText = dip.name;
+    //     dipFlavourContainer.append(dipName);
+    //     dipName.addEventListener("click", () => addToCart(dip, dipName));
+    // });
+
+	dips.forEach((dip) => {
+		const dipName = document.createElement("p");
+		dipName.innerText = dip.name;
+		dipName.setAttribute("role", "button");
+		dipName.setAttribute("tabindex", "0");
+		dipFlavourContainer.append(dipName);
+		dipName.addEventListener("click", () => addToCart(dip, dipName));
+	
+		// Lägg till tangentbordsstöd för Enter-tangenten
+		dipName.addEventListener("keydown", (event) => {
+			if (event.key === "Enter") {
+				addToCart(dip, dipName);
+			}
+		});
+	});
 
     //render drinks
 

@@ -105,6 +105,11 @@ p {
     background-color: var(--pop-grey);
 }
 
+.flavour-container > p:hover {
+    background-color: var(--chosen-grey);
+	cursor: pointer;
+}
+
 
 .drinks {
     margin-top: 1rem;
