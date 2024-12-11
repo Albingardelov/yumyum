@@ -125,6 +125,18 @@ export function renderMenu(menu) {
 	});
 }
 
+function updateCartCounter() {
+    const cartCounter = document.querySelector(".cart-counter");
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    if (totalItems > 0) {
+        cartCounter.textContent = totalItems;
+        cartCounter.style.display = "flex"; // Visa bollen om det finns artiklar
+    } else {
+        cartCounter.style.display = "none"; // Dölj bollen om det inte finns några artiklar
+    }
+}
+
 function addToCart(item, element) {
     const existingItem = cart.find((itemInCart) => itemInCart.id === item.id);
     if (existingItem) {
@@ -135,6 +147,7 @@ function addToCart(item, element) {
         element.classList.add("chosen");
     }
     cartToSend.push(item.id);
+	updateCartCounter();
     console.log(cart);
     console.log(cartToSend);
 }
