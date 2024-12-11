@@ -132,7 +132,7 @@ export function renderMenu(menu) {
 	});
 }
 
-function updateCartCounter() {
+export function updateCartCounter() {
     const cartCounter = document.querySelector(".cart-counter");
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -158,5 +158,6 @@ function addToCart(item, element) {
     console.log(cart);
     console.log(cartToSend);
 }
+
 
 export { cart, cartToSend };
