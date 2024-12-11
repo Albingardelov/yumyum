@@ -138,9 +138,9 @@ export function updateCartCounter() {
 
     if (totalItems > 0) {
         cartCounter.textContent = totalItems;
-        cartCounter.style.display = "flex"; // Visa bollen om det finns artiklar
+        cartCounter.style.display = "flex";
     } else {
-        cartCounter.style.display = "none"; // Dölj bollen om det inte finns några artiklar
+        cartCounter.style.display = "none";
     }
 }
 
