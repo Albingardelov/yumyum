@@ -30,6 +30,9 @@ export function renderMenu(menu) {
         const dotBox = document.createElement("div");
         const wontonIngredients = document.createElement("p");
 
+		wontonContainer.setAttribute("role", "button");
+		wontonContainer.setAttribute("tabindex", "0");
+
         dotBox.classList.add("dot-box");
         wontonContainer.classList.add("dish-container");
 
@@ -79,7 +82,6 @@ export function renderMenu(menu) {
 		dipFlavourContainer.append(dipName);
 		dipName.addEventListener("click", () => addToCart(dip, dipName));
 	
-		// Lägg till tangentbordsstöd för Enter-tangenten
 		dipName.addEventListener("keydown", (event) => {
 			if (event.key === "Enter") {
 				addToCart(dip, dipName);
@@ -108,11 +110,19 @@ export function renderMenu(menu) {
     menuDrinks.append(drinkContainer);
 
     drinks.forEach((drink) => {
-        const drinkName = document.createElement("p");
-        drinkName.innerText = drink.name;
-        drinkFlavourContainer.append(drinkName);
-        drinkName.addEventListener("click", () => addToCart(drink, drinkName));
-    });
+		const drinkName = document.createElement("p");
+		drinkName.innerText = drink.name;
+		drinkName.setAttribute("role", "button");
+		drinkName.setAttribute("tabindex", "0");
+		drinkFlavourContainer.append(drinkName);
+		drinkName.addEventListener("click", () => addToCart(drink, drinkName));
+	
+		drinkName.addEventListener("keydown", (event) => {
+			if (event.key === "Enter") {
+				addToCart(drink, drinkName);
+			}
+		});
+	});
 }
 
 function addToCart(item, element) {
