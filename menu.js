@@ -150,14 +150,25 @@ function addToCart(item, element) {
         existingItem.quantity++;
     } else {
         cart.push({ ...item, quantity: 1 });
-
         element.classList.add("chosen");
     }
-    cartToSend.push(item.id);
-	updateCartCounter();
-    console.log(cart);
-    console.log(cartToSend);
+
+    updateCartToSend();
+    updateCartCounter();
+    console.log("Cart:", cart);
+    console.log("CartToSend:", cartToSend);
 }
+
+function updateCartToSend() {
+    cartToSend.length = 0;
+    cart.forEach((item) => {
+        for (let i = 0; i < item.quantity; i++) {
+            cartToSend.push(item.id);
+        }
+    });
+    console.log("Updated CartToSend:", cartToSend);
+}
+
 
 
 export { cart, cartToSend };

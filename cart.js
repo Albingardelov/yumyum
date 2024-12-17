@@ -22,7 +22,7 @@ function openEtaSection() {
     etaMessage.textContent = "ETA 5 MIN";
 }
 
-export function renderCart(cart, cartToSend) {
+export function renderCart(cart) {
     let total = [];
     cartItems.innerHTML = "";
 
@@ -59,8 +59,7 @@ export function renderCart(cart, cartToSend) {
 
         increaseButton.addEventListener("click", () => {
             item.quantity++;
-            updateCart(cart, cartToSend);
-			updateCartCounter()
+            updateCart(cart);
         });
 
         decreaseButton.addEventListener("click", () => {
@@ -72,15 +71,15 @@ export function renderCart(cart, cartToSend) {
                     cart.splice(index, 1);
                 }
             }
-            updateCart(cart, cartToSend);
-			updateCartCounter()
+            updateCart(cart);
         });
     });
 
     cartSum.innerText = total.reduce((a, b) => a + b, 0) + " SEK";
 }
 
-export function updateCart(cart, cartToSend) {
-    renderCart(cart, cartToSend);
+export function updateCart(cart) {
+    renderCart(cart);
+    updateCartToSend();
     updateCartCounter();
 }
