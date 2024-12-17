@@ -25,10 +25,20 @@ buyButton.addEventListener("click", async () => {
             if (response && response.order) {
                 console.log("Order mottagen:", response);
 
+                const itemsWithQuantity = response.order.items.map((itemFromAPI) => {
+                    const matchingItem = cart.find(
+                        (cartItem) => cartItem.id === itemFromAPI.id
+                    );
+                    return {
+                        ...itemFromAPI,
+                        quantity: matchingItem ? matchingItem.quantity : 1,
+                    };
+                });
+
                 sessionStorage.setItem("receiptData", JSON.stringify({
                     id: response.order.id,
                     orderValue: response.order.orderValue,
-                    items: response.order.items
+                    items: itemsWithQuantity,
                 }));
 
                 cartSection.classList.add("hidden");
@@ -52,6 +62,7 @@ buyButton.addEventListener("click", async () => {
         }
     }
 });
+
 
 
 showReceiptButton.addEventListener("click", () => {
