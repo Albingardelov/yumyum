@@ -5,21 +5,19 @@ const cartSum = document.querySelector("#cart-sum");
 const buyButton = document.querySelector("#buy-button");
 const etaSection = document.querySelector(".eta");
 
-// Lägg till event listener för buyButton
+
 buyButton.addEventListener("click", () => {
     openEtaSection();
 });
 
-// Funktion för att öppna ETA-sektionen
+
 function openEtaSection() {
-    // Dölj kundvagnen
+    
     cartSection.classList.add("hidden");
 
-    // Visa ETA-sektionen
 	etaSection.classList.add("active")
     etaSection.classList.remove("hidden");
 
-    // Sätt ett meddelande eller ETA-logik
     const etaMessage = document.querySelector("#eta-message");
     etaMessage.textContent = "ETA 5 MIN";
 }

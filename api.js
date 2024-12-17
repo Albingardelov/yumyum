@@ -1,8 +1,9 @@
 const apiKey = 'yum-24wDDIiKn23xmDqw'
+const tenantId = 'zqfz'
 const url = 'https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/'
 
 
-export async function getMenu() {
+async function getMenu() {
     const options = {
         method: "GET",
         headers: {
@@ -18,3 +19,35 @@ export async function getMenu() {
         console.log("Fel:", response.status, error);
     }
 }
+
+async function sendOrder(cart) {
+    const bodyToSend = { items: cart };
+
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "x-zocom": KEY,
+        },
+        body: JSON.stringify(bodyToSend),
+    };
+    try {
+        const response = await fetch(url + ID + "/orders", options);
+
+        if (!response.ok) {
+            console.error(
+                `Fel vid anrop: ${response.status} ${response.statusText}`
+            );
+            return;
+        }
+
+        const data = await response.json();
+        console.log(data);
+        console.log(response.status);
+        return data;
+    } catch (error) {
+        console.log("Fel:", error.message);
+    }
+}
+
+export { sendOrder, getMenu};
