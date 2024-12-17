@@ -3,13 +3,91 @@ import { cart } from "./menu.js";
 import { sendOrder } from "./api.js";
 import { renderReceipt } from "./receipt.js";
 
+// Sektioner och element
 const cartSection = document.querySelector(".cart");
+const etaSection = document.querySelector(".eta");
 const receiptSection = document.querySelector(".receipt");
+const menuSection = document.querySelector(".menu");
+
 const cartItems = document.querySelector(".cart-items");
 const cartSum = document.querySelector("#cart-sum");
 const buyButton = document.querySelector("#buy-button");
 
-const cartToSend = [];
+const showReceiptButton = document.querySelector("#receipt-button");
+const newOrderButton = document.querySelector("#neworder-button");
+
+const cartToSend = []; // Array för att skicka artiklar till API:et
+
+// "Take My Money" knapp
+buyButton.addEventListener("click", async () => {
+    if (cartToSend.length === 0) {
+        console.log("Kundvagnen är tom!");
+    } else {
+        try {
+            const response = await sendOrder(cartToSend);
+            if (response && response.order) {
+                console.log("Order mottagen:", response);
+
+                // Spara kvittodata i sessionStorage
+                sessionStorage.setItem("receiptData", JSON.stringify({
+                    id: response.order.id,
+                    orderValue: response.order.orderValue,
+                    items: response.order.items
+                }));
+
+                cartSection.classList.add("hidden");
+                etaSection.classList.add("active");
+                etaSection.classList.remove("hidden");
+
+                const etaTime = new Date(response.order.eta);
+                const currentTime = new Date();
+                const timeLeftInMinutes = Math.ceil((etaTime - currentTime) / (1000 * 60));
+
+                const etaMessage = document.querySelector("#eta-message");
+                const etaOrderId = document.querySelector("#eta-order-id");
+
+                etaMessage.innerText = `ETA ${timeLeftInMinutes} MIN`;
+                etaOrderId.innerText = `Order ID: #${response.order.id.toUpperCase()}`;
+            } else {
+                console.error("Fel: Ogiltigt svar från API.");
+            }
+        } catch (error) {
+            console.error("Fel vid skickning av order:", error);
+        }
+    }
+});
+
+showReceiptButton.addEventListener("click", () => {
+    const receiptData = JSON.parse(sessionStorage.getItem("receiptData"));
+    if (receiptData) {
+        // Ta bort "active" från ETA-sektionen och lägg till "hidden"
+        etaSection.classList.remove("active");
+        etaSection.classList.add("hidden");
+
+        // Visa kvitto-sektionen
+        receiptSection.classList.remove("hidden");
+
+        // Rendera kvittot
+        renderReceipt(receiptData);
+    } else {
+        console.error("Ingen kvitto-data hittades!");
+    }
+});
+
+newOrderButton.addEventListener("click", () => {
+    // Dölj kvittosektionen
+    receiptSection.classList.add("hidden");
+
+    // Visa menyn (Startsidan)
+    menuSection.classList.remove("hidden");
+
+    // Återställ kundvagnen
+    cart.length = 0;
+    cartToSend.length = 0;
+    updateCartCounter();
+});
+
+
 
 export function renderCart(cart) {
     let total = [];
@@ -76,45 +154,6 @@ function updateCartToSend(cart) {
         }
     });
 }
-
-buyButton.addEventListener("click", async () => {
-    if (cartToSend.length === 0) {
-        console.log("Kundvagnen är tom!");
-    } else {
-        try {
-            const response = await sendOrder(cartToSend);
-            if (response && response.order) {
-                console.log("Order mottagen:", response);
-
-                const itemsWithQuantity = response.order.items.map((itemFromAPI) => {
-                    const matchingItem = cart.find(
-                        (cartItem) => cartItem.id === itemFromAPI.id
-                    );
-                    return {
-                        ...itemFromAPI,
-                        quantity: matchingItem ? matchingItem.quantity : 1,
-                    };
-                });
-
-                const receiptData = {
-                    id: response.order.id,
-                    orderValue: response.order.orderValue,
-                    items: itemsWithQuantity,
-                };
-
-                cartSection.classList.add("hidden");
-                receiptSection.classList.remove("hidden");
-                renderReceipt(receiptData);
-            } else {
-                console.error("Fel: Ogiltigt svar från API.");
-            }
-        } catch (error) {
-            console.error("Fel vid skickning av order:", error);
-        }
-    }
-});
-
-
 
 export function updateCart(cart) {
     renderCart(cart);
