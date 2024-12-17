@@ -1,26 +1,15 @@
 import { updateCartCounter } from "./menu.js";
+import { cart } from "./menu.js";
+import { sendOrder } from "./api.js";
+import { renderReceipt } from "./receipt.js";
+
 const cartSection = document.querySelector(".cart");
+const receiptSection = document.querySelector(".receipt");
 const cartItems = document.querySelector(".cart-items");
 const cartSum = document.querySelector("#cart-sum");
 const buyButton = document.querySelector("#buy-button");
-const etaSection = document.querySelector(".eta");
 
-
-buyButton.addEventListener("click", () => {
-    openEtaSection();
-});
-
-
-function openEtaSection() {
-    
-    cartSection.classList.add("hidden");
-
-	etaSection.classList.add("active")
-    etaSection.classList.remove("hidden");
-
-    const etaMessage = document.querySelector("#eta-message");
-    etaMessage.textContent = "ETA 5 MIN";
-}
+const cartToSend = [];
 
 export function renderCart(cart) {
     let total = [];
@@ -76,10 +65,58 @@ export function renderCart(cart) {
     });
 
     cartSum.innerText = total.reduce((a, b) => a + b, 0) + " SEK";
+    updateCartToSend(cart);
 }
+
+function updateCartToSend(cart) {
+    cartToSend.length = 0;
+    cart.forEach((item) => {
+        for (let i = 0; i < item.quantity; i++) {
+            cartToSend.push(item.id);
+        }
+    });
+}
+
+buyButton.addEventListener("click", async () => {
+    if (cartToSend.length === 0) {
+        console.log("Kundvagnen är tom!");
+    } else {
+        try {
+            const response = await sendOrder(cartToSend);
+            if (response && response.order) {
+                console.log("Order mottagen:", response);
+
+                const itemsWithQuantity = response.order.items.map((itemFromAPI) => {
+                    const matchingItem = cart.find(
+                        (cartItem) => cartItem.id === itemFromAPI.id
+                    );
+                    return {
+                        ...itemFromAPI,
+                        quantity: matchingItem ? matchingItem.quantity : 1,
+                    };
+                });
+
+                const receiptData = {
+                    id: response.order.id,
+                    orderValue: response.order.orderValue,
+                    items: itemsWithQuantity,
+                };
+
+                cartSection.classList.add("hidden");
+                receiptSection.classList.remove("hidden");
+                renderReceipt(receiptData);
+            } else {
+                console.error("Fel: Ogiltigt svar från API.");
+            }
+        } catch (error) {
+            console.error("Fel vid skickning av order:", error);
+        }
+    }
+});
+
+
 
 export function updateCart(cart) {
     renderCart(cart);
-    updateCartToSend();
     updateCartCounter();
 }

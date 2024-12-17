@@ -27,12 +27,12 @@ async function sendOrder(cart) {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "x-zocom": KEY,
+            "x-zocom": apiKey,
         },
         body: JSON.stringify(bodyToSend),
     };
     try {
-        const response = await fetch(url + ID + "/orders", options);
+        const response = await fetch(url + tenantId + "/orders", options);
 
         if (!response.ok) {
             console.error(

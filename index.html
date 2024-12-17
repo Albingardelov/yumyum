@@ -4,15 +4,18 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>YumYum</title>
+	<link rel="icon" type="image/x-icon" href="assets/logo.svg" />
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="cart.css">
 	<link rel="stylesheet" href="colorpallet.css">
 	<link rel="stylesheet" href="eta-section.css">
+	<link rel="stylesheet" href="receipt.css">
 	<script type="module" src="api.js"></script>
 	<script type="module" src="app.js"></script>
 	<script type="module" src="cart.js"></script>
 	<script type="module" src="order.js"></script>
 	<script type="module" src="menu.js"></script>
+	<script type="module" src="receipt.js"></script>
 </head>
 <body>
 	<section class="menu">
@@ -53,15 +56,32 @@
 	</section>
 
 	<section class="receipt hidden">
-		<h2>Kvitto</h2>
-		<div class="receipt-items"></div>
-		<div class="receipt-total">
-			<h4>Total</h4>
-			<p id="receipt-sum"></p>
+		<div class="receipt-container">
+			<header>
+				<div>
+					<img
+						src="assets/logo.svg"
+						alt="Yumyum-logo"
+						class="logo"
+					/>
+				</div>
+				<h2>KVITTO</h2>
+				<p id="receipt-id"></p>
+			</header>
+			<div class="receipt-items"></div>
+			<footer>
+				<div class="cart-total">
+					<div>
+						<h4>TOTALT</h4>
+						<p>inkl 20% moms</p>
+					</div>
+					<p id="receipt-sum"></p>
+				</div>
+			</footer>
 		</div>
-		<div class="receipt-id">
-			<p id="receipt-id"></p>
-		</div>
+		<footer>
+			<button class="neworder-button">GÖR EN NY BESTÄLLING</button>
+		</footer>
 	</section>
 </body>
 </html>
