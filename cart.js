@@ -8,11 +8,10 @@ const cartSection = document.querySelector(".cart");
 const etaSection = document.querySelector(".eta");
 const receiptSection = document.querySelector(".receipt");
 const menuSection = document.querySelector(".menu");
-
+const goToMenuButton = document.querySelector(".goToMenu-button");
 const cartItems = document.querySelector(".cart-items");
 const cartSum = document.querySelector("#cart-sum");
 const buyButton = document.querySelector("#buy-button");
-
 const showReceiptButton = document.querySelector("#receipt-button");
 const newOrderButton = document.querySelector("#neworder-button");
 
@@ -47,7 +46,7 @@ buyButton.addEventListener("click", async () => {
                 const etaOrderId = document.querySelector("#eta-order-id");
 
                 etaMessage.innerText = `ETA ${timeLeftInMinutes} MIN`;
-                etaOrderId.innerText = `Order ID: #${response.order.id.toUpperCase()}`;
+                etaOrderId.innerText = `#${response.order.id.toUpperCase()}`;
             } else {
                 console.error("Fel: Ogiltigt svar från API.");
             }
@@ -77,6 +76,8 @@ showReceiptButton.addEventListener("click", () => {
 newOrderButton.addEventListener("click", () => {
     // Dölj kvittosektionen
     receiptSection.classList.add("hidden");
+	etaSection.classList.add("hidden");
+	etaSection.classList.remove("active")
 
     // Visa menyn (Startsidan)
     menuSection.classList.remove("hidden");
@@ -85,6 +86,22 @@ newOrderButton.addEventListener("click", () => {
     cart.length = 0;
     cartToSend.length = 0;
     updateCartCounter();
+});
+
+goToMenuButton.addEventListener("click", () => {
+    // Dölj kvittosektionen
+    receiptSection.classList.add("hidden");
+
+    // Dölj ETA-sektionen
+    etaSection.classList.add("hidden");
+
+    // Visa menyn
+    menuSection.classList.remove("hidden");
+
+    // Återställ kundvagnen
+    cart.length = 0;
+    cartToSend.length = 0;
+    updateCartCounter(); // Återställ kundvagnen och räknaren
 });
 
 

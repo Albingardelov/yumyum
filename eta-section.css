@@ -39,6 +39,14 @@
     color: var(--text-white);
 }
 
+#eta-order-id {
+    font-size: 15px;
+    color: var(--text-white);
+    font-weight: 500;
+    margin-top: 10px;
+    text-align: center;
+}
+
 
 #receipt-button {
 	background-color: var(--background-grey);

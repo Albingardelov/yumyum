@@ -42,7 +42,23 @@
     font-weight: 700;
     font-size: 30px;
 }
-@media (min-width: 900px) {
+
+.goToMenu-button {
+    background-color: var(--chosen-grey); /* Samma som för andra knappar */
+    color: var(--text-white);
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.goToMenu-button:hover {
+    background-color: var(--background-grey);
+    border: 2.5px solid var(--button-border);
+}
+
+/* @media (min-width: 900px) {
     body {
         display: flex;
     }
@@ -60,22 +76,8 @@
     .receipt-container .cart-total {
         border-radius: 0 0 10px 10px;
     }
-}
+} */
 
 .hidden {
     display: none;
-}
-#neworder-button {
-	background-color: var(--chosen-grey);
-    color: var(--text-white);
-    border: none;
-    padding: 1rem;
-    border-radius: 5px;
-    font-weight: 700;
-    font-size: 22px;
-}
-
-#neworder-button:hover {
-	background-color: var(--background-grey);
-	border: 2.5px solid var(--button-border);
 }
