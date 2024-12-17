@@ -3,22 +3,37 @@ const receiptSum = document.querySelector("#receipt-sum");
 const receiptId = document.querySelector("#receipt-id");
 
 export function renderReceipt(receipt) {
+    if (!receipt || !receipt.items) {
+        console.error("Order data is missing or incorrect!");
+        return;
+    }
+
     receiptItems.innerHTML = "";
+
     receipt.items.forEach((item) => {
         const itemContainer = document.createElement("div");
+        const itemTilteContainer = document.createElement("div");
         const itemTitle = document.createElement("h3");
         const itemPrice = document.createElement("h3");
+        const dotBox = document.createElement("div");
+        const quantityContainer = document.createElement("div");
         const quantity = document.createElement("p");
 
+        dotBox.classList.add("dot-box");
         itemContainer.classList.add("item-container");
+        quantity.classList.add("quantity");
+
         itemTitle.innerText = item.name.toUpperCase();
         itemPrice.innerText = item.price + " SEK";
-        quantity.innerText = `Antal: ${item.quantity}`;
+        quantity.innerText = item.quantity + " stycken";
 
-        itemContainer.append(itemTitle, quantity, itemPrice);
         receiptItems.append(itemContainer);
+        itemContainer.append(itemTilteContainer, quantityContainer);
+        itemTilteContainer.append(itemTitle, dotBox, itemPrice);
+        quantityContainer.append(quantity);
     });
 
-    receiptSum.innerText = `Totalt: ${receipt.orderValue} SEK`;
-    receiptId.innerText = `#${receipt.id}`;
+    receiptSum.innerText = receipt.orderValue + " SEK";
+    receiptId.innerText = "#" + receipt.id.toUpperCase();
 }
+

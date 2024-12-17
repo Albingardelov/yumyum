@@ -3,7 +3,6 @@ import { cart } from "./menu.js";
 import { sendOrder } from "./api.js";
 import { renderReceipt } from "./receipt.js";
 
-// Sektioner och element
 const cartSection = document.querySelector(".cart");
 const etaSection = document.querySelector(".eta");
 const receiptSection = document.querySelector(".receipt");
@@ -15,9 +14,8 @@ const buyButton = document.querySelector("#buy-button");
 const showReceiptButton = document.querySelector("#receipt-button");
 const newOrderButton = document.querySelector("#neworder-button");
 
-const cartToSend = []; // Array för att skicka artiklar till API:et
+const cartToSend = [];
 
-// "Take My Money" knapp
 buyButton.addEventListener("click", async () => {
     if (cartToSend.length === 0) {
         console.log("Kundvagnen är tom!");
@@ -27,7 +25,6 @@ buyButton.addEventListener("click", async () => {
             if (response && response.order) {
                 console.log("Order mottagen:", response);
 
-                // Spara kvittodata i sessionStorage
                 sessionStorage.setItem("receiptData", JSON.stringify({
                     id: response.order.id,
                     orderValue: response.order.orderValue,
@@ -56,17 +53,14 @@ buyButton.addEventListener("click", async () => {
     }
 });
 
+
 showReceiptButton.addEventListener("click", () => {
     const receiptData = JSON.parse(sessionStorage.getItem("receiptData"));
     if (receiptData) {
-        // Ta bort "active" från ETA-sektionen och lägg till "hidden"
         etaSection.classList.remove("active");
         etaSection.classList.add("hidden");
 
-        // Visa kvitto-sektionen
         receiptSection.classList.remove("hidden");
-
-        // Rendera kvittot
         renderReceipt(receiptData);
     } else {
         console.error("Ingen kvitto-data hittades!");
@@ -74,34 +68,27 @@ showReceiptButton.addEventListener("click", () => {
 });
 
 newOrderButton.addEventListener("click", () => {
-    // Dölj kvittosektionen
     receiptSection.classList.add("hidden");
 	etaSection.classList.add("hidden");
 	etaSection.classList.remove("active")
 
-    // Visa menyn (Startsidan)
     menuSection.classList.remove("hidden");
 
-    // Återställ kundvagnen
     cart.length = 0;
     cartToSend.length = 0;
     updateCartCounter();
 });
 
 goToMenuButton.addEventListener("click", () => {
-    // Dölj kvittosektionen
     receiptSection.classList.add("hidden");
 
-    // Dölj ETA-sektionen
     etaSection.classList.add("hidden");
 
-    // Visa menyn
     menuSection.classList.remove("hidden");
 
-    // Återställ kundvagnen
     cart.length = 0;
     cartToSend.length = 0;
-    updateCartCounter(); // Återställ kundvagnen och räknaren
+    updateCartCounter();
 });
 
 
