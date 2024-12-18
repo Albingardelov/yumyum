@@ -25,15 +25,15 @@ buyButton.addEventListener("click", async () => {
             if (response && response.order) {
                 console.log("Order mottagen:", response);
 
-                const itemsWithQuantity = response.order.items.map((itemFromAPI) => {
-                    const matchingItem = cart.find(
-                        (cartItem) => cartItem.id === itemFromAPI.id
-                    );
-                    return {
-                        ...itemFromAPI,
-                        quantity: matchingItem ? matchingItem.quantity : 1,
-                    };
-                });
+                const itemsWithQuantity = response.order.items.reduce((acc, itemFromAPI) => {
+                    const existingItem = acc.find(i => i.id === itemFromAPI.id);
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        acc.push({ ...itemFromAPI, quantity: 1 });
+                    }
+                    return acc;
+                }, []);
 
                 sessionStorage.setItem("receiptData", JSON.stringify({
                     id: response.order.id,
@@ -62,6 +62,7 @@ buyButton.addEventListener("click", async () => {
         }
     }
 });
+
 
 
 
