@@ -17,10 +17,23 @@
     border: none;
     place-self: flex-end;
     border-radius: 10px;
-    /* box-shadow: var(--shadow); */
+    box-shadow: var(--shadow);
 	position: relative;
 	cursor: pointer;
 }
+
+.menu .cart-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    border: none;
+    border-radius: 10px;
+    /* padding: 10px; */
+    cursor: pointer;
+    box-shadow: var(--shadow);
+}
+
 
 .cart-counter {
     display: none;
