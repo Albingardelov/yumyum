@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-
     font-family: "Fira Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -20,10 +19,6 @@
     border-radius: 10px;
     /* box-shadow: var(--shadow); */
 	position: relative;
-}
-
-.cart-button {
-    position: relative;
 	cursor: pointer;
 }
 
@@ -157,4 +152,17 @@ p {
 
 .hidden {
     display: none;
+}
+
+.menu, .receipt, .cart {
+    max-width: 600px; /* Sätter en maximal bredd */
+    margin: 0 auto; /* Centrera horisontellt */
+    padding: 20px; /* Lägg till lite luft runt */
+    box-shadow: var(--shadow); /* För en subtil skugga */
+}
+
+@media (max-width: 1024px) {
+    .menu, .receipt {
+        max-width: 90%; /* Anpassa bredden på mindre skärmar */
+    }
 }

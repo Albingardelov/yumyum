@@ -1,4 +1,3 @@
-/* Stil för hela ETA-sektionen */
 .eta {
 	display: none;
 }
@@ -16,13 +15,12 @@
     margin: 20px auto;
 }
 
-/* Stil för bilden */
 .eta img {
-    max-width: 100%; /* Anpassa till föräldrarnas bredd */
-    height: auto; /* Bibehåll proportioner */
-    max-height: 200px; /* Begränsa höjden */
-    margin-bottom: 20px; /* Utrymme under bilden */
-    border-radius: 8px; /* Rundade hörn för en mjukare känsla */
+    max-width: 100%;
+    height: auto;
+    max-height: 200px;
+    margin-bottom: 20px;
+    border-radius: 8px;
 }
 
 /* Stil för rubriken */
