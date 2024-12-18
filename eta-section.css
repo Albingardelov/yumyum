@@ -1,6 +1,7 @@
 .eta {
-	display: none;
+    display: none;
 }
+
 .eta.active {
     display: flex;
     flex-direction: column;
@@ -9,11 +10,13 @@
     text-align: center;
     padding: 20px;
     background-color: var(--background-grey);
-    border-radius: 8px;
+    /* border-radius: 8px; */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 20px auto;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
 }
+
 
 .eta img {
     max-width: 100%;
@@ -56,6 +59,7 @@
     font-size: 22px;
 	margin: 0.75rem;
 	min-width: 312px;
+	cursor: pointer;
 }
 
 #receipt-button:hover {
@@ -70,6 +74,7 @@
     border-radius: 5px;
     font-weight: 700;
     font-size: 22px;
+	cursor: pointer;
 }
 
 #neworder-button:hover {
