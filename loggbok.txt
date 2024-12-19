@@ -1,0 +1,44 @@
+Loggbok för Albin Gärdelöv – Foodtruck-projekt
+
+GitHub Pages: https://albingardelov.github.io/yumyum/
+GitHub Repo: https://github.com/Albingardelov/yumyum
+
+
+Logg
+
+5/12  Projektet introducerades. Jag skrev kod för att generera en unik API-nyckel och kopplade den till en tenant. Säkerställde att API-anslutningen fungerade för framtida integrationer.
+
+6/12  Hämtade menyn från API:t och började bygga upp en menysektion i applikationen. Stylade menyerna baserat på designskissen för att skapa en ren och intuitiv användarupplevelse.
+
+10/12  Arbetade vidare med kundvagnssektionen. Implementerade funktionalitet för att lägga till produkter till kundvagnen och visa det totala beloppet. Säkerställde att kundvagnens innehåll uppdateras dynamiskt vid ändringar.
+
+11/12  Påbörjade utvecklingen av ETA-sektionen. Testade API-anrop för att visa uppskattad leveranstid baserat på användarens val i kundvagnen. Integrerade sektionen med meny- och kundvagnsfunktionerna.
+
+12/12  Slutförde kundvagnssektionen och byggde vidare på kvittofunktionen. Funktionen summerar beställningen och visar en detaljerad översikt över användarens val. Utmaningen låg i att synkronisera kundvagnen med kvittot korrekt. 
+
+började kolla på att lägga till min cartcounterbadge på kundvagnsikonen
+
+13/12  Gjorde applikationen responsiv. Säkerställde att menyer, kundvagn och ETA-sektionen fungerar smidigt på både mobil och desktop. Fick feedback och justerade menyer och layout för att förbättra användarupplevelsen.
+
+14/12  Färdigställde kvittofunktionen och lade till dynamiska uppdateringar för ETA-sektionen baserat på ändringar i kundvagnen. Förbättrade API-anropen för att optimera hastigheten och minska laddningstiden.
+
+15/12  Gjorde en genomgång av hela applikationen. Testade alla sektioner (meny, ETA, kundvagn och kvitto) för att säkerställa att allt fungerar sömlöst. Gjorde slutgiltiga justeringar och förberedde projektet för inlämning.
+
+16/12 Har fixa till så att mina api-anrop faktiskt skickar order till api osv, haft problem med att mitt kvitto får en rad för varje tillagd artikel(även om det är samma artikel får den flera rader.), vilket kvittot inte i designskissen inte visar.
+
+17/12 Fått klart mina anrop så det stämmer och fungerar korrekt med API. lagt till order id i ETA sektionen och på kvittot. 
+
+18/12 Fick bygga om min funktion för att hantera det som sparas i kvitto, föratt få fleara artiklar som är lika att ligga på samma rad, har experimenterad med att ha en flytande kundvagnsknapp, så an enklare ser att man faktiskt lägger till artiklar i kundvagnen, ändrade stylen så att allt ser bättre ut på stora skärmar
+
+19/12 Kollat igenom allt och är väldigt nöjd med hur allt ser ut och fungerar, kunde varit med organiserad som vanligt, är lite stökgt i min kod kan jag tycka. 
+
+Jag har haft code reviews i skolan, med shweta och hanna, båda dom höll med om att min style på stora skärmar inte va så snyggt, men att annars hade dom inte så mycket att säga. Shweta hade använtsig av en svg fil som jag gav feedback om att hon borde styla kundvagnen med egen html och css istället. 
+Sen hade jag en tidigare med betyl, felix, hanna, bara hanna och betyl va med, då hade ingen av oss kommit speciellt långt. så det sades inte så mycket. 
+
+Användartester : Jag har testat min meny på min flickvän varje dag egentligen för att få feedvack av någon som inte kan något om kod eller liknande, för att få en bra input av en kund, jag har även fått mycket input av min bror som är backend programerare, nästan varje dag har han testat min kod. och tycker att det ser väldigt bra ut. 
+
+bad min kompis 18/12 att testa min applikation, eftersom han är designer tänkte jag han kunde få ge mig input om kundvagnsknappen, som jag själv tycker inte är så bra att den är dold när man scrollar ner på mindre skärmar, nu är den flytande istället, men täcker då istället lite av menyn, vilket också är lite fult. Men nu får den va så
+
+Utvärdering och reflektion
+
+Det här projektet har varit både utmanande och lärorikt. Jag har utvecklat mina kunskaper i att arbeta med API-integrationer och hantera dynamiska data. Att bygga responsiva och användarvänliga funktioner har gett mig bättre förståelse för hur frontend och backend samspelar.
