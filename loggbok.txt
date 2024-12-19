@@ -1,6 +1,7 @@
 Loggbok för Albin Gärdelöv – Foodtruck-projekt
 
-GitHub Pages: [Länk här om det finns]GitHub-repo: [Länk här om det finns]
+GitHub Pages: https://albingardelov.github.io/yumyum/
+GitHub Repo: https://github.com/Albingardelov/yumyum
 
 Logg
 
@@ -30,7 +31,7 @@ började kolla på att lägga till min cartcounterbadge på kundvagnsikonen
 
 19/12 Kollat igenom allt och är väldigt nöjd med hur allt ser ut och fungerar, kunde varit med organiserad som vanligt, är lite stökgt i min kod kan jag tycka. 
 
-Jag har haft code reviews i skolan, med shweta och hanna, båda dom höll med om att min style på stora skärmar inte va så snyggt, men att annars hade dom inte så mycket att säga.
+Jag har haft code reviews i skolan, med shweta och hanna, båda dom höll med om att min style på stora skärmar inte va så snyggt, men att annars hade dom inte så mycket att säga. Shweta hade använtsig av en svg fil som jag gav feedback om att hon borde styla kundvagnen med egen html och css istället. 
 Sen hade jag en tidigare med betyl, felix, hanna, bara hanna och betyl va med, då hade ingen av oss kommit speciellt långt. så det sades inte så mycket. 
 
 Användartester : Jag har testat min meny på min flickvän varje dag egentligen för att få feedvack av någon som inte kan något om kod eller liknande, för att få en bra input av en kund, jag har även fått mycket input av min bror som är backend programerare, nästan varje dag har han testat min kod. och tycker att det ser väldigt bra ut. 
